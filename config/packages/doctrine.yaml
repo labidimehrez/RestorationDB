@@ -1,0 +1,42 @@
+
+parameters:
+
+    database_host:     mysql
+    database_name:     ''
+    database_user:     ****
+    database_password: ****
+    env(DATABASE_URL): ''
+
+    remote_user:     ****
+    remote_password:     ****
+    remote_database_user:     ****
+    remote_database_password:     ****
+    remote_database_host:     ****
+    databases:  [****]
+
+doctrine:
+    dbal:
+        # configure these for your database server
+        host:     '%database_host%'
+        dbname:   '%database_name%'
+        user:     '%database_user%'
+        password: '%database_password%'
+        driver: 'pdo_mysql'
+        server_version: '8.0'
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+        url: '%env(resolve:DATABASE_URL)%'
+
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
