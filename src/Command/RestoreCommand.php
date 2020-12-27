@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class RestoreCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'app:create-user';
+    protected static $defaultName = 'RestoreDB';
     /**
      * @var Connection
      */
